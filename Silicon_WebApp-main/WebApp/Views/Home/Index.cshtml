@@ -1,0 +1,9 @@
+﻿@model HomeIndexViewModel
+
+@await Html.PartialAsync("~/Views/Shared/Partials/_ShowcasePartial.cshtml", Model.Showcase)
+@await Html.PartialAsync("~/Views/Shared/Partials/_FeaturesPartial.cshtml", Model.Features)
+<img id="light-dark-mode" src="~/images/light-dark-mode.svg" alt="Switch Between Light & Dark Mode">
+@await Html.PartialAsync("~/Views/Shared/Partials/_TaskmanagerPartial.cshtml", Model.Taskmanager)
+@await Html.PartialAsync("~/Views/Shared/Partials/_DownloadAppPartial.cshtml", Model.DownloadApp)
+@await Html.PartialAsync("~/Views/Shared/Partials/_IntegratePartial.cshtml", Model.Integrate)
+@await Html.PartialAsync("~/Views/Shared/Partials/_NewsletterPartial.cshtml", Model.Newsletter)

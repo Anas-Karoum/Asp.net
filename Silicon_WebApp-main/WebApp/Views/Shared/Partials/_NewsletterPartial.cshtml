@@ -1,0 +1,74 @@
+﻿@model NewsletterViewModel
+
+<section id="@Model.Id" class="newsletter">
+    <div class="container">
+        <div class="newsletter-title">
+            <h1>@Model.Title</h1>
+            <img src="@Model.Image.ImageUrl" alt="@Model.Image.ImageAlt">
+        </div>
+        <form asp-action="Subscribe" asp-controller="Home">
+            <div class="news-box">
+                <h5>@Model.FormTitle</h5>
+
+
+                <div class="newsletter-group">
+                    <div class="newsletter-checkbox">
+                        <div class="checkbox-group">
+                            <input asp-for="Subscribe.DailyNewsletter">
+                            <label asp-for="Subscribe.DailyNewsletter"></label>
+                        </div>
+                    </div>
+                    <div class="newsletter-checkbox">
+                        <div class="checkbox-group">
+                            <input asp-for="Subscribe.AdvertisingUpdates">
+                            <label asp-for="Subscribe.AdvertisingUpdates"></label>
+                        </div>
+                    </div>
+                    <div class="newsletter-checkbox">
+                        <div class="checkbox-group">
+                            <input asp-for="Subscribe.WeekinReview">
+                            <label asp-for="Subscribe.WeekinReview"></label>
+                        </div>
+                    </div>
+                    <div class="newsletter-checkbox">
+                        <div class="checkbox-group">
+                            <input asp-for="Subscribe.EventUpdates">
+                            <label asp-for="Subscribe.EventUpdates"></label>
+                        </div>
+                    </div>
+                    <div class="newsletter-checkbox">
+                        <div class="checkbox-group">
+                            <input asp-for="Subscribe.StarupsWeekly">
+                            <label asp-for="Subscribe.StarupsWeekly"></label>
+                        </div>
+                    </div>
+                    <div class="newsletter-checkbox">
+                        <div class="checkbox-group">
+                            <input asp-for="Subscribe.Podcasts">
+                            <label asp-for="Subscribe.Podcasts"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subscribe-email">
+                <div class="input-group">
+                    <input asp-for="Subscribe.Email">
+                </div>
+                <button type="submit" class="@Model.Button.LinkType">@Model.Button.LinkText</button>
+            </div>
+            <p>* Yes, I agree to the <a target="_blank" href="#">terms</a> and <a target="_blank" href="#">privacy policy.</a></p>
+            @if (!string.IsNullOrEmpty(TempData["StatusMessage"]?.ToString()))
+            {
+                if (TempData["StatusMessage"]?.ToString() == "You are now subscribed")
+                {
+                    <span class="status-success">@TempData["StatusMessage"]</span>
+                }
+                else
+                {
+                    <span class="status-fail">@TempData["StatusMessage"]</span>
+                }
+            }
+        </form>
+    </div>
+</section>
